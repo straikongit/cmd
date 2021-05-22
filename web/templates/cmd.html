@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>cmd edit Form</title>
+       <link rel="stylesheet" media="screen" href ="static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+       <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+	<style>
+		.linebreak {
+			white-space: pre-wrap;
+	}
+	</style>
+    </head>
+    <body>
+ 
+ 
+<div class="container">
+ 
+ 
+  <h3>Command Editor</h3>
+  <form  action="" method="post" role="form">
+    {{ form.csrf }}
+
+	<label for="freeIDs">next free ID's {{ freeIDs }}</label>
+    <div class="form-group">
+		<b>id:</b>
+		<input type="text" class="form-control" id="id" name="id" >
+		<b>header:</b>
+		<input type="textarea" class="form-control" id="header" name="header" placeholder="header" >
+		<b>command:</b>
+		<textarea  class="form-control" rows="3" id="command" name="command" placeholder="command"></textarea>
+		<b>tags:</b>
+		<textarea class="form-control"id="tags" name="tags"   rows="3" placeholder="tags"></textarea>
+		<b>source:</b>
+		<input type="textarea" class="form-control" id="source" name="source" placeholder="source">
+		<button type="submit" class="btn btn-success">Save</button>
+    </div>
+  </form>
+ 
+<br>
+<div class="linebreak">
+	<div class="container-fluid">
+	{% for c in commands %}
+		<ul class "list-group">
+			<!-- <a href ="/?command= {{ c['id'] }} " > {{ c["id"] }} </a> -->
+			<a  onClick="cpToEdit({{ c['id'] }}) " class="list-group-item active">"calick" {{ c["id"] }} </a>
+			<li class="list-group-item" id="li-header{{ c['id'] }}">  {{ c["header"] }} </li>
+			<li class="list-group-item" id="li-command{{ c['id'] }}"> {{ c["command"] }} </li>
+			<li class="list-group-item" id="li-tags{{ c['id'] }}"> {{ c["tags"] }} </li>
+			<li class="list-group-item" id="li-source{{ c['id'] }}"> {{ c["source"] }} </li>
+		</ul>
+	{% endfor %}
+
+</div>
+		</div>
+<script>
+		function cpToEdit(id){
+			document.getElementById('id').value =  id;
+			document.getElementById('header').value = document.getElementById('li-header' + id).innerText;
+			document.getElementById('command').value = document.getElementById('li-command' + id).innerText;
+			document.getElementById('source').value = document.getElementById('li-source' + id).innerText;
+			document.getElementById('tags').value = document.getElementById('li-tags' + id).innerText;
+			document.body.scrollTop = document.documentElement.scrollTop = 0;
+}
+
+</script>
+</div>
+</body>
+</html>
