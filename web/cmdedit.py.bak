@@ -26,8 +26,8 @@ class cmdForm(Form):
 def cmd():
     
     form = cmdForm(request.form)
-    print((form.errors))
-    print((jsonify(form.errors)))
+    print(form.errors)
+    print(jsonify(form.errors))
 
 
     with open("../cmd.json","r") as f:
