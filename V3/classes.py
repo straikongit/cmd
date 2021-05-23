@@ -84,8 +84,9 @@ class kindaDB():
         goptionMap[option]=value
  
     def saveOptions(self, fname):
-        with open(fname, "w+") as f:
+        with open(fname, "wb") as f:
             m={}
+
             m["options"]=optionMap
             m["goptions"] = goptionMap
 
@@ -94,7 +95,7 @@ class kindaDB():
     def LoadOptions(self, fname):
         global optionMap
         global goptionMap
-        with open(fname, "r") as f:
+        with open(fname, "rb") as f:
             m=pickle.load(f)
             optionMap = m["options"]
             goptionMap = m["goptions"]

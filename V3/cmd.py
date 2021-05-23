@@ -68,6 +68,8 @@ def cmdHelp():
     options      			-->     shows msf-style options
     set          			-->     set [option] [value]
     global          			-->     set [option] [value]
+    save [string]                   -->     save options
+    load [string]                   -->     load previous saved options
     search | s [string] ... [-][string] -->     search commands, the [-] excludes [string] from results
     q            			-->     end program
 
