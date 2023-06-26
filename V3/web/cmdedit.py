@@ -6,7 +6,7 @@ import os
 import json
 from time import time
 from flask import Flask, render_template, request, jsonify
-from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
+from wtforms import Form, StringField, TextAreaField, validators, StringField, SubmitField
 
 #DEBUG = True
 app = Flask(__name__)
@@ -14,12 +14,12 @@ app = Flask(__name__)
 #app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 class cmdForm(Form):
-    #ID = TextField("id", validators=[validators.Regexp("/[0:9]+/",message = "number required")])
-    #ID = TextField("id", validators=[validators.Regexp("/[0:9]+/",message = "number required")])
-    header = TextField()
+    #ID = StringField("id", validators=[validators.Regexp("/[0:9]+/",message = "number required")])
+    #ID = StringField("id", validators=[validators.Regexp("/[0:9]+/",message = "number required")])
+    header = StringField()
     commmand = TextAreaField()
     tags = TextAreaField()
-    source = TextField()
+    source = StringField()
 
 
 @app.route('/', methods =['GET','POST'])
